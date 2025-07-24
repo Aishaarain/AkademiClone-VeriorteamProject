@@ -60,10 +60,10 @@ const UserDashboard = () => {
           </div>
         </div>
        
-        <div className="max-w-[300px] flex flex-col gap-4 ">
+        <div className="max-w-[300px] flex flex-col gap-4 mx-auto">
 
           <div className="bg-gradient-to-t from-[#303972] to-[#4D44B5] rounded-2xl p-0 flex flex-col gap-0 relative overflow-hidden">
-         
+        
             <div className="absolute right-0 bottom-0 w-full h-full pointer-events-none select-none">
               <img src={planbgimage} alt="plan bg" className="absolute right-0 bottom-0  w-auto" />
             </div>
@@ -76,8 +76,8 @@ const UserDashboard = () => {
                 <li>50 GB Storage</li>
                 <li>Limited Features</li>
               </ul>
-              <div className="text-white text-sm font-normal mb-4">Upgrade to Premium Plan to get more Features & Storage memory</div>
-              <button className="mt-2 w-fit px-8 py-3 rounded-full bg-white text-[#4D44B5] font-bold text-lg shadow-sm">Upgrade Plan</button>
+              <div className="text-white text-xs 2xl:text-sm font-normal mb-4">Upgrade to Premium Plan to get more Features & Storage memory</div>
+              <button className="mt-2 w-fit px-6 py-2 2xl:px-8 2xl:py-3 rounded-full bg-white text-[#4D44B5] font-bold text-base 2xl:text-lg shadow-sm">Upgrade Plan</button>
             </div>
           </div>
           <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">

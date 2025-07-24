@@ -5,7 +5,7 @@ import ScheduleDetails from '../components/ScheduleDetails';
 const Event = () => {
   return (
     <div className="bg-[#F3F4FF] flex flex-col items-center 2xl:flex-row gap-4  overflow-x-hidden w-full  min-h-screen">
-      <div className="flex-1 flex justify-center px-12">
+      <div className="flex-1 flex justify-center px-1 lg:px-12">
         <div className="w-full max-w-full lg:w-[900px] 2xl:w-[800px] 2xl:h-[1066px] rounded-[20px] overflow-hidden">
           <EventCalendar />
         </div>
