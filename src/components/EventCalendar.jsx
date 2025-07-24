@@ -10,7 +10,6 @@ const eventColors = {
 
 const events = [
   { day: 2, dots: ['purple', 'orange', 'yellow'] },
-  // For day 6, simulate 9 events for the '7+' badge
   { day: 6, dots: ['lightPurple', 'lightPurple', 'lightPurple', 'lightPurple', 'lightPurple', 'lightPurple', 'lightPurple', 'orange', 'blue'] },
   { day: 10, dots: ['purple'], selected: true },
   { day: 17, dots: ['yellow', 'orange'] },
@@ -20,7 +19,7 @@ const events = [
 ];
 
 const Calendar = () => {
-  const [selectedMonth, setSelectedMonth] = useState(0); // January
+  const [selectedMonth, setSelectedMonth] = useState(0); 
   const [selectedYear, setSelectedYear] = useState(2021);
   const [selectedDay, setSelectedDay] = useState(null);
 
@@ -31,16 +30,14 @@ const Calendar = () => {
 
   const days = ['Mon', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-  // Generate calendar grid for the month
   const getCalendarGrid = () => {
     const firstDay = new Date(selectedYear, selectedMonth, 1);
     let startDay = firstDay.getDay();
-    if (startDay === 0) startDay = 7; // Sunday as 7
+    if (startDay === 0) startDay = 7;
     const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
     const grid = [];
     let week = [];
     let dayNum = 1;
-    // Fill first week
     for (let i = 1; i <= 7; i++) {
       if (i < startDay) week.push(null);
       else week.push(dayNum++);
@@ -99,7 +96,7 @@ const Calendar = () => {
             {week.map((day, j) => {
               const event = getEventForDay(day);
               const isSelected = event && event.selected;
-              // Special rendering for day 6 (orange bg, white number, event dots, 7+ badge)
+            
               if (day === 6) {
                 const eventDots = event ? event.dots.slice(0, 2) : [];
                 const hasMore = event && event.dots.length > 2;
@@ -125,7 +122,6 @@ const Calendar = () => {
                   </div>
                 );
               }
-              // Special rendering for day 10 (deep purple bg, white number, yellow bar, label)
               if (day === 10) {
                 return (
                   <div
@@ -141,7 +137,6 @@ const Calendar = () => {
                   </div>
                 );
               }
-              // Default rendering for other days
               return (
                 <div
                   key={j}
@@ -152,7 +147,7 @@ const Calendar = () => {
                   style={day === null ? {background: 'transparent'} : {}}
                 >
                   <span className="text-lg font-semibold">{day || ''}</span>
-                  {/* Dots for events */}
+                
                   {event && day !== 6 && day !== 10 && (
                     <div className="flex space-x-1 mt-2">
                       {event.dots && event.dots.map((color, id) => (
@@ -164,7 +159,6 @@ const Calendar = () => {
                       ))}
                     </div>
                   )}
-                  {/* Border for today or selected */}
                   {isSelected && <div className="absolute inset-0 rounded-xl border-2 border-[#4D44B5] pointer-events-none"></div>}
                 </div>
               );
