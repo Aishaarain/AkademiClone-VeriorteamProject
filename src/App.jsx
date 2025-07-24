@@ -7,7 +7,8 @@ import FoodPage from './pages/Foodmenu';
 import Navbar from './components/Navbar';
 import {Menu} from 'lucide-react'
 import Event from './pages/Event';
-
+import Finance from './pages/Finance';
+import User from './pages/UserDashboard';
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 const location = useLocation();
@@ -37,11 +38,11 @@ const location = useLocation();
             {/* <Route path="/students" element={<Students />} />
             <Route path="/teachers" element={<Teachers />} /> */}
             <Route path="/event" element={<Event />} />
-            {/* <Route path="/finance" element={<Finance />} /> */}
+            <Route path="/finance" element={<Finance />} />
             {/* <Route path="/food" element={<FoodPage />} /> */}
-            {/* <Route path="/user" element={<User />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/activity" element={<Activity />} /> */}
+             <Route path="/user" element={<User />} /> 
+            {/* <Route path="/chat" element={<Chat />} /> */}
+            {/* <Route path="/activity" element={<Activity />} /> */}
           </Routes>
         </main>
       </div>
