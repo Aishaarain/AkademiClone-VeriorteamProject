@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Teachers from "./pages/Teachers";
+import TeacherDetails from "./pages/TeacherDetails";
+import AddTeacher from "./pages/AddTeacher";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-pink-500'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-brand-light">
+      {/* Simple Navigation Bar */}
+      <nav className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-brand-purple">Akademi</h1>
+        <div className="space-x-4">
+          <Link
+            to="/"
+            className="text-gray-700 font-medium hover:text-brand-purple"
+          >
+            Teachers
+          </Link>
+          <Link
+            to="/add-teacher"
+            className="text-gray-700 font-medium hover:text-brand-purple"
+          >
+            Add Teacher
+          </Link>
+        </div>
+      </nav>
 
-export default App
+      {/* Page Routes */}
+      <Routes>
+        <Route path="/" element={<Teachers />} />
+        <Route path="/teachers/:id" element={<TeacherDetails />} />
+        <Route path="/add-teacher" element={<AddTeacher />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default App;
+
