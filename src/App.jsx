@@ -1,18 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Students from "./pages/Students";
-import StudentDetails from "./pages/StudentDetails";
-import AddStudent from "./pages/AddStudent";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Students from './pages/Students';
+import AddStudent from './pages/AddStudent';
+import StudentDetails from './pages/StudentDetails';
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/students" element={<Students />} />
-        <Route path="/students/:id" element={<StudentDetails />} />
-        <Route path="/add-student" element={<AddStudent />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Students />} />
+      <Route path="/student/:id" element={<StudentDetails />} />
+      <Route path="/add-student" element={<AddStudent />} />
+    </Routes>
   );
 }
-
-export default App;
