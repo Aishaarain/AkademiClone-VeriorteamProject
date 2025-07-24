@@ -40,10 +40,10 @@ function App({setSidebarOpen}) {
             />
             
           </div> 
-          <div className="lg:hidden max-sm:block">
+          <div className="md:hidden max-sm:block">
                      
                     <Menu
-                      className="w-6 h-6  text-gray-800 cursor-pointer"
+                      className="w-6 h-6  text-gray-800 cursor-pointer "
                       onClick={() => setSidebarOpen(true)}
                     />
                   </div>

@@ -6,7 +6,7 @@ import Sidebar from './components/Mainsidebar';
 import FoodPage from './pages/Foodmenu';
 import Navbar from './components/Navbar';
 import {Menu} from 'lucide-react'
-
+import Fooddetail from './pages/FoodDetails';
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 const location = useLocation();
@@ -38,6 +38,7 @@ const location = useLocation();
             <Route path="/event" element={<Event />} />
             <Route path="/finance" element={<Finance />} /> */}
             <Route path="/food" element={<FoodPage />} />
+            <Route path="/food/:foodId" element={<Fooddetail />} />
             {/* <Route path="/user" element={<User />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/activity" element={<Activity />} /> */}

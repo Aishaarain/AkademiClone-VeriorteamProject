@@ -28,7 +28,7 @@ const BarChart = () => {
             <span className="text-gray-600">Last</span>
           </div>
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
             <span className="text-gray-600">Last</span>
           </div>
         </div>
@@ -43,7 +43,7 @@ const BarChart = () => {
                 style={{ height: `${(item.value / maxValue) * 140}px` }}
               ></div>
               <div
-                className="bg-blue-500 rounded-t-sm"
+                className="bg-yellow-400 rounded-t-sm"
                 style={{ height: `${((item.value - 15) / maxValue) * 140}px` }}
               ></div>
             </div>

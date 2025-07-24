@@ -1,99 +1,97 @@
+
+
 import React from 'react';
+import {
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid
+} from 'recharts';
 
-const LineChart = () => {
-  const data = [
-    { month: 'Jan', value: 20 },
-    { month: 'Feb', value: 45 },
-    { month: 'Mar', value: 30 },
-    { month: 'Apr', value: 65 },
-    { month: 'May', value: 40 },
-    { month: 'Jun', value: 80 },
-    { month: 'Jul', value: 55 },
-    { month: 'Aug', value: 70 },
-    { month: 'Sep', value: 45 },
-    { month: 'Oct', value: 85 },
-    { month: 'Nov', value: 60 },
-    { month: 'Dec', value: 90 },
-  ];
+const chartData = [
+  { month: 'Jan', orange: 19, yellow: 5  },
+  { month: 'Feb', orange: 35, yellow: 25 },
+  { month: 'Mar', orange: 50, yellow: 85 },
+  { month: 'Apr', orange: 20, yellow: 40 },
+  { month: 'May', orange: 8, yellow: 5   },
+  { month: 'Jun', orange: 30, yellow: 35 },
+  { month: 'Jul', orange: 50, yellow: 60 }, 
+  { month: 'Aug', orange: 30, yellow: 40 },
+  { month: 'Sep', orange: 5, yellow: 25  },
+  { month: 'Oct', orange: 40, yellow: 60 },
+  { month: 'Nov', orange: 75, yellow: 70 },
+  { month: 'Dec', orange: 40, yellow: 55 },
+];
 
-  const maxValue = Math.max(...data.map(d => d.value));
-
+const ChartComponent = () => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm">
-      <div className="flex justify-between items-center mb-6">
+    <div className="w-full h-[400px] bg-white p-4   rounded-lg shadow-md"> {/* Tailwind styling */}
+     
+      <div className="flex justify-between items-center ">
         <h3 className="text-lg font-semibold text-gray-800">School Performance</h3>
         <div className="flex items-center space-x-4 text-sm">
           <div className="flex items-center">
             <div className="w-3 h-3 bg-orange-400 rounded-full mr-2"></div>
-            <span className="text-gray-600">Last</span>
+           <div className='flex-col mt-3'>
+            <span className="text-gray-600">last week</span>
+            <p className='font-bold'>2362</p>
+            </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex  items-center">
             <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-            <span className="text-gray-600">Last</span>
+            <div className='flex-col mt-3'>
+            <span className="text-gray-600">this week</span>
+            <p className='font-bold'>2362</p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="h-48 relative">
-        <svg className="w-full h-full" viewBox="0 0 400 150">
-          {/* Grid lines */}
-          {[0, 25, 50, 75, 100].map((y, i) => (
-            <line
-              key={i}
-              x1="0"
-              y1={150 - (y * 1.2)}
-              x2="400"
-              y2={150 - (y * 1.2)}
-              stroke="#f3f4f6"
-              strokeWidth="1"
-            />
-          ))}
-          
-          {/* Chart lines */}
-          <path
-            d={`M ${data.map((d, i) => `${(i * 33) + 20},${150 - (d.value * 1.2)}`).join(' L ')}`}
-            fill="none"
-            stroke="#f97316"
-            strokeWidth="2"
-            className="drop-shadow-sm"
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          data={chartData}
+          margin={{ top: 10, right: 10, left: 0, bottom: 30 }}
+        >
+          <defs>
+           
+            <linearGradient id="colorOrange" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FFA08A" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#FFC8BC" stopOpacity={0.1}/>
+            </linearGradient>
+            
+            <linearGradient id="colorYellow" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FFE066" stopOpacity={0.6}/> {/* Adjust yellow shade */}
+              <stop offset="95%" stopColor="#FFF2B2" stopOpacity={0.05}/>
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="month" axisLine={false} tickLine={false} className="text-sm text-gray-600" />
+          <YAxis axisLine={false} tickLine={false} orientation="left" className="text-sm text-gray-600" domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} />
+          <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#e0e0e0" /> {/* Vertical lines as in the image */}
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+
+          <Area
+            type="monotone"
+            dataKey="yellow"
+            stroke="#FFD700" 
+            fillOpacity={1}
+            fill="url(#colorYellow)"
+            strokeWidth={3}
           />
-          <path
-            d={`M ${data.map((d, i) => `${(i * 33) + 20},${150 - ((d.value - 10) * 1.2)}`).join(' L ')}`}
-            fill="none"
-            stroke="#8b5cf6"
-            strokeWidth="2"
-            className="drop-shadow-sm"
+          <Area
+            type="monotone"
+            dataKey="orange"
+            stroke="#FF7A68"
+            fillOpacity={1}
+            fill="url(#colorOrange)"
+            strokeWidth={3}
           />
-          
-          {/* Data points */}
-          {data.map((d, i) => (
-            <g key={i}>
-              <circle
-                cx={(i * 33) + 20}
-                cy={150 - (d.value * 1.2)}
-                r="4"
-                fill="#f97316"
-                className="drop-shadow-sm"
-              />
-              <circle
-                cx={(i * 33) + 20}
-                cy={150 - ((d.value - 10) * 1.2)}
-                r="4"
-                fill="#8b5cf6"
-                className="drop-shadow-sm"
-              />
-            </g>
-          ))}
-        </svg>
-        
-        {/* X-axis labels */}
-        <div className="flex justify-between text-xs text-gray-500 mt-2">
-          {data.map((d, i) => (
-            <span key={i}>{d.month}</span>
-          ))}
-        </div>
-      </div>
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
+    
   );
 };
 
-export default LineChart;
+export default ChartComponent;

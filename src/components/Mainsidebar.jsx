@@ -33,7 +33,7 @@ const Mainsidebar = ({setSidebarOpen,sidebarOpen}) => {
           <div className="lg:hidden max-sm:block">
            
           <Menu
-            className={`w-6 h-6 mt-3 ml-16 text-gray-800 cursor-pointer `}
+            className={`w-6 h-6 mt-3 ml-16 text-gray-800 cursor-pointer md:hidden`}
             onClick={() => setSidebarOpen(false)}
           />
         </div>
