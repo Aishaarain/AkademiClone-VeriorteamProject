@@ -8,7 +8,7 @@ const Messages = () => {
       message: 'Lorem ipsum dolor sit amet...',
       time: '12 Min',
       avatar: 'SW',
-    
+      color: 'bg-purple-500',
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ const Messages = () => {
       message: 'Lorem ipsum dolor sit amet...',
       time: '2 Min',
       avatar: 'TS',
-     
+      color: 'bg-blue-500',
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ const Messages = () => {
       message: 'Lorem ipsum dolor sit amet...',
       time: '1 Hour',
       avatar: 'JN',
-      
+      color: 'bg-green-500',
     },
     {
       id: 4,
@@ -32,7 +32,7 @@ const Messages = () => {
       message: 'Lorem ipsum dolor sit amet...',
       time: '12 Min',
       avatar: 'NA',
-     
+      color: 'bg-orange-500',
     },
   ];
 
@@ -46,7 +46,7 @@ const Messages = () => {
       <div className="space-y-4">
         {messages.map((message) => (
           <div key={message.id} className="flex items-start space-x-3">
-            <div className={`w-10 h-10 bg-[#C1BBEB] rounded-full flex items-center justify-center flex-shrink-0`}>
+            <div className={`w-10 h-10 ${message.color} rounded-full flex items-center justify-center flex-shrink-0`}>
               <span className="text-white text-sm font-medium">{message.avatar}</span>
             </div>
             <div className="flex-1 min-w-0">

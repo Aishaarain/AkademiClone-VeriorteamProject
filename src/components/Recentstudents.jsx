@@ -21,7 +21,7 @@ const RecentStudents = () => {
         {students.map((student) => (
           <div key={student.id} className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className={`w-10 h-10 ${student.color} rounded-full flex items-center justify-center`}>
+              <div className={`w-10 h-10 bg-[#C1BBEB] rounded-full flex items-center justify-center`}>
                 <span className="text-white text-sm font-medium">{student.avatar}</span>
               </div>
               <span className="text-gray-700 font-medium">{student.name}</span>

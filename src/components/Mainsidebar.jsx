@@ -39,7 +39,7 @@ const Mainsidebar = ({setSidebarOpen,sidebarOpen}) => {
         </div>
         </div>
  
-        <nav className="flex flex-col space-y-1 px-2">
+        <nav className="flex flex-col space-y-1 px-2" onClick={() => setSidebarOpen(false)}>
           {menuItems.map(({ name, icon, path }) => (
             <NavLink
               key={name}

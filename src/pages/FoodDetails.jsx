@@ -28,7 +28,7 @@ const FoodDetailPage = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 p-6 mx-10 bg-white rounded-lg shadow-sm">
+    <div className="flex flex-col lg:flex-row gap-8 p-6 mx-10 mb-10 bg-white rounded-lg shadow-sm">
       
       <div className="flex-1 space-y-8">
        

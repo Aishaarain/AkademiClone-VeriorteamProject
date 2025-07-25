@@ -8,8 +8,6 @@ import  Sidebar2 from '../components/Dashboardsidebar';
 import UnpaidStudents from '../components/Unpaidstudents';
 
 
-
-
 function App({setSidebarOpen}) {
   const stats = [
     { icon: Users, value: '832', iconColor: 'text-blue-600', bgColor: 'bg-blue-100', title:'Students' },
