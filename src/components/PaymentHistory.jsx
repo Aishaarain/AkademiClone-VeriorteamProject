@@ -36,23 +36,31 @@ const statusColor = {
 
 export default function PaymentHistory() {
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-md w-full max-w-6xl mx-auto font-poppins">
+    <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-md w-full max-w-6xl mx-auto font-poppins">
       {/* Title */}
-      <h2 className="text-2xl font-extrabold text-[#303972] mb-8">Payment History</h2>
+      <h2 className="text-xl sm:text-2xl font-extrabold text-[#303972] mb-6 sm:mb-8">Payment History</h2>
 
       {/* Table */}
       <div className="space-y-6">
         {payments.map((payment, index) => (
-          <div key={index} className="flex justify-between items-center">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#FF4D4F] flex items-center justify-center">
-                <TrendingUp size={20} className="text-white" />
+          <div
+            key={index}
+            className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0"
+          >
+            {/* Left: Icon + ID */}
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FF4D4F] flex items-center justify-center">
+                <TrendingUp size={18} className="text-white" />
               </div>
               <div className="text-[#303972] font-bold text-base">{payment.id}</div>
             </div>
-            <div className="text-sm text-[#A098AE]">{payment.date}</div>
-            <div className="text-[#303972] font-bold text-lg">{payment.amount}</div>
-            <div className={`font-semibold text-right w-[100px] ${statusColor[payment.status]}`}>
+
+            {/* Center: Date + Amount */}
+            <div className="text-sm text-[#A098AE] sm:text-left">{payment.date}</div>
+            <div className="text-[#303972] font-bold text-base sm:text-lg">{payment.amount}</div>
+
+            {/* Right: Status */}
+            <div className={`font-semibold ${statusColor[payment.status]}`}>
               {payment.status}
             </div>
           </div>
@@ -60,7 +68,7 @@ export default function PaymentHistory() {
       </div>
 
       {/* Footer */}
-      <div className="mt-10 flex justify-between items-center text-sm text-[#A098AE]">
+      <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-sm text-[#A098AE]">
         <p>
           Showing <span className="text-[#303972] font-semibold">1-5</span> from{' '}
           <span className="text-[#303972] font-semibold">100</span> data

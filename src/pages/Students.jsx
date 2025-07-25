@@ -72,13 +72,13 @@ export default function Students() {
   };
 
   return (
-    <div className="min-h-screen px-10 py-8 bg-[#F3F4FF] text-[#303972]">
+    <div className="min-h-screen px-4 sm:px-10 py-8 bg-[#F3F4FF] text-[#303972]">
       {/* Header */}
       <Header setSidebarOpen={() => {}} />
 
       {/* Table */}
       <div className="bg-white rounded-xl shadow overflow-x-auto mt-6">
-        <table className="min-w-full">
+        <table className="min-w-[900px] w-full">
           <thead>
             <tr className="text-left text-sm text-[#303972] border-b">
               <th className="p-4">
@@ -153,7 +153,7 @@ export default function Students() {
       </div>
 
       {/* Footer & Pagination */}
-      <div className="mt-10 flex justify-between items-center text-sm text-[#A098AE]">
+      <div className="mt-10 flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-[#A098AE] gap-4">
         <p>
           Showing <span className="text-[#303972] font-semibold">1–5</span> from{' '}
           <span className="text-[#303972] font-semibold">100</span> data
