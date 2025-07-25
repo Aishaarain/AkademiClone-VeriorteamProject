@@ -60,7 +60,7 @@ const students = [
   },
 ];
 
-export default function Students() {
+export default function Students({setSidebarOpen}) {
   const [checkedRows, setCheckedRows] = useState([]);
 
   const handleCheck = (index) => {
@@ -74,7 +74,7 @@ export default function Students() {
   return (
     <div className="min-h-screen px-4 sm:px-10 py-8 bg-[#F3F4FF] text-[#303972]">
       {/* Header */}
-      <Header setSidebarOpen={() => {}} />
+      <Header setSidebarOpen={setSidebarOpen} />
 
       {/* Table */}
       <div className="bg-white rounded-xl shadow overflow-x-auto mt-6">
