@@ -48,7 +48,6 @@ function App({setSidebarOpen}) {
         </div>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 bg-white rounded-xl">
         {stats.map((stat, index) => (
           <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -74,11 +73,11 @@ function App({setSidebarOpen}) {
           <UnpaidStudents />
         </div>
       </div>
-    </div>
+    </div> 
   </div>
 
-  {/* Sidebar (right on large, below on mobile) */}
-  <div className="w-full lg:w-[300px] p-4 max-lg:hidden">
+ 
+  <div className="w-full lg:w-[300px] p-4 max-lg:flex ">
     <Sidebar2 />
   </div>
 </div>

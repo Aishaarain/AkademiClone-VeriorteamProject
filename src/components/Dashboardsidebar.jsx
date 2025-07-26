@@ -2,13 +2,12 @@
 import RecentStudents from '../components/Recentstudents';
 import Messages from '../components/Messages';
 import FoodMenu from '../components/FoodSidebar';
-import { Menu } from 'lucide-react';
  import {Bell, Settings } from 'lucide-react';
 
 
-const Dashboardsidebar = ({setSidebarOpen,sidebarOpen}) => {
+const Dashboardsidebar = () => {
   return (
-     <div className="space-y-6 w-[250px] right-0 top-0 bg-white mt-0 pt-[12px] fixed  z-50 lg:block hidden h-screen overflow-y-scroll custom-scroll ">
+     <div className="space-y-6 w-[250px] right-0 top-0 bg-white mt-0 pt-[12px] lg:fixed  z-50 lg:block max-lg:flex max-lg:flex-col max-lg:w-full max-lg:ml-2  h-screen overflow-y-scroll custom-scroll ">
                <div className="flex items-center space-x-3 bg-white">
                <div className="flex items-center space-x-4  mt-8 ml-5 ">
      
@@ -32,11 +31,8 @@ const Dashboardsidebar = ({setSidebarOpen,sidebarOpen}) => {
       </div>
     </div>
               
-              <div className="md:hidden ">
-  <Menu className="w-6 h-6 text-gray-700 cursor-pointer ml-[15px] mt-[10px]" onClick={() => setSidebarOpen(!sidebarOpen)} />
-    
-</div>
-            </div >
+             
+            </div  >
             
                   <RecentStudents />
                   <Messages />

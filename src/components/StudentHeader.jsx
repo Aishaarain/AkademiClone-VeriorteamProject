@@ -32,7 +32,7 @@ const Header = ({ setSidebarOpen}) => {
             </div>
 
             {/* Name & Profile */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 max-sm:hidden">
               <div className="text-right">
                 <p className="text-[#303972] font-bold leading-tight">Nabila A.</p>
                 <p className="text-sm text-[#A098AE] leading-tight">Admin</p>
