@@ -76,91 +76,144 @@ export default function Students() {
       {/* Header */}
       <Header setSidebarOpen={() => {}} />
 
-      {/* Table */}
-      <div className="bg-white rounded-xl shadow overflow-x-auto mt-6">
-        <table className="min-w-[900px] w-full">
-          <thead>
-            <tr className="text-left text-sm text-[#303972] border-b">
-              <th className="p-4">
-                <input type="checkbox" className="w-4 h-4 accent-[#4D44B5]" />
-              </th>
-              <th>Name</th>
-              <th>ID</th>
-              <th>Date</th>
-              <th>Parent Name</th>
-              <th>City</th>
-              <th>Contact</th>
-              <th>Grade</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((s, idx) => {
-              const isChecked = checkedRows.includes(idx);
-              return (
-                <tr
-                  key={idx}
-                  className={`hover:bg-[#F5F5F5] transition ${
-                    isChecked ? 'border-l-[4px] border-[#4D44B5]' : ''
-                  }`}
+      {/* Web Table – visible only on sm and up */}
+      <div className="bg-white rounded-xl shadow mt-6 overflow-x-auto hidden sm:block">
+        <div className="w-full min-w-[900px]">
+          <table className="w-full">
+            <thead>
+              <tr className="text-left text-sm text-[#303972] border-b">
+                <th className="p-4">
+                  <input type="checkbox" className="w-4 h-4 accent-[#4D44B5]" />
+                </th>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Parent Name</th>
+                <th>City</th>
+                <th>Contact</th>
+                <th>Grade</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((s, idx) => {
+                const isChecked = checkedRows.includes(idx);
+                return (
+                  <tr
+                    key={idx}
+                    className={`hover:bg-[#F5F5F5] transition ${
+                      isChecked ? 'border-l-[4px] border-[#4D44B5]' : ''
+                    }`}
+                  >
+                    <td className="p-4">
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => handleCheck(idx)}
+                        className="w-4 h-4 accent-[#4D44B5]"
+                      />
+                    </td>
+                    <td>
+                      <Link
+                        to={`/student/${idx}`}
+                        className="flex items-center gap-2 font-bold py-4 text-[#303972]"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-[#C1BBEB]" />
+                        {s.name}
+                      </Link>
+                    </td>
+                    <td className="font-bold text-[#4D44B5]">{s.id}</td>
+                    <td className="text-[#A098AE]">{s.date}</td>
+                    <td className="text-[#303972]">{s.parent}</td>
+                    <td className="text-[#303972]">{s.city}</td>
+                    <td>
+                      <div className="flex gap-2">
+                        <div className="bg-[#4d44b51a] p-1.5 rounded-full">
+                          <Phone className="text-[#4D44B5] w-4 h-4 cursor-pointer" />
+                        </div>
+                        <div className="bg-[#4d44b51a] p-1.5 rounded-full">
+                          <Mail className="text-[#4D44B5] w-4 h-4 cursor-pointer" />
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span
+                        className={`text-white px-3 py-1 rounded-full text-sm ${s.gradeColor}`}
+                      >
+                        {s.grade}
+                      </span>
+                    </td>
+                    <td>
+                      <MoreHorizontal className="w-5 h-5 text-[#4D44B5] cursor-pointer" />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Mobile Cards – visible only on small screens */}
+      <div className="block sm:hidden mt-6 space-y-4">
+        {students.map((s, idx) => {
+          const isChecked = checkedRows.includes(idx);
+          return (
+            <div
+              key={idx}
+              className="bg-white p-4 rounded-xl shadow text-sm text-[#303972]"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2 font-bold">
+                  <div className="w-8 h-8 rounded-full bg-[#C1BBEB]" />
+                  <Link
+                    to={`/student/${idx}`}
+                    className="text-[#303972] hover:underline"
+                  >
+                    {s.name}
+                  </Link>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={() => handleCheck(idx)}
+                  className="w-4 h-4 accent-[#4D44B5]"
+                />
+              </div>
+              <p><span className="font-semibold">ID:</span> <span className="text-[#4D44B5]">{s.id}</span></p>
+              <p><span className="font-semibold">Date:</span> {s.date}</p>
+              <p><span className="font-semibold">Parent:</span> {s.parent}</p>
+              <p><span className="font-semibold">City:</span> {s.city}</p>
+              <div className="flex items-center gap-2 mt-2">
+                <div className="bg-[#4d44b51a] p-1.5 rounded-full">
+                  <Phone className="text-[#4D44B5] w-4 h-4 cursor-pointer" />
+                </div>
+                <div className="bg-[#4d44b51a] p-1.5 rounded-full">
+                  <Mail className="text-[#4D44B5] w-4 h-4 cursor-pointer" />
+                </div>
+              </div>
+              <div className="mt-2 flex items-center justify-between">
+                <span
+                  className={`text-white px-3 py-1 rounded-full text-sm ${s.gradeColor}`}
                 >
-                  <td className="p-4">
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => handleCheck(idx)}
-                      className="w-4 h-4 accent-[#4D44B5]"
-                    />
-                  </td>
-                  <td>
-                    <Link
-                      to={`/student/${idx}`}
-                      className="flex items-center gap-2 font-bold py-4 text-[#303972]"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-[#C1BBEB]" />
-                      {s.name}
-                    </Link>
-                  </td>
-                  <td className="font-bold text-[#4D44B5]">{s.id}</td>
-                  <td className="text-[#A098AE]">{s.date}</td>
-                  <td className="text-[#303972]">{s.parent}</td>
-                  <td className="text-[#303972]">{s.city}</td>
-                  <td>
-                    <div className="flex gap-2">
-                      <div className="bg-[#4d44b51a] p-1.5 rounded-full">
-                        <Phone className="text-[#4D44B5] w-4 h-4 cursor-pointer" />
-                      </div>
-                      <div className="bg-[#4d44b51a] p-1.5 rounded-full">
-                        <Mail className="text-[#4D44B5] w-4 h-4 cursor-pointer" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className={`text-white px-3 py-1 rounded-full text-sm ${s.gradeColor}`}
-                    >
-                      {s.grade}
-                    </span>
-                  </td>
-                  <td>
-                    <MoreHorizontal className="w-5 h-5 text-[#4D44B5] cursor-pointer" />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                  {s.grade}
+                </span>
+                <MoreHorizontal className="w-5 h-5 text-[#4D44B5] cursor-pointer" />
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Footer & Pagination */}
-      <div className="mt-10 flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-[#A098AE] gap-4">
+      <div className="mt-10 flex flex-col sm:flex-row justify-between items-center text-sm text-[#A098AE] gap-4">
         <p>
           Showing <span className="text-[#303972] font-semibold">1–5</span> from{' '}
           <span className="text-[#303972] font-semibold">100</span> data
         </p>
 
         {/* Pagination */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2">
           <button className="w-8 h-8 rounded-full flex items-center justify-center text-[#A098AE] hover:bg-gray-100">
             &#9664;
           </button>
